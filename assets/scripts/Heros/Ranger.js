@@ -1,8 +1,7 @@
-export default class Ranger{
+import Heros from "Heros";
+export default class Ranger extends Heros{
     constructor(){
-        this.speedX = 10,
-        this.speedY = 10,
-        this.life = 100
+        super();
     }
 }
 

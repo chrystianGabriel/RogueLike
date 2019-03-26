@@ -41,9 +41,9 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.22375626773199297,
-      "y": 0.22375626773199297,
-      "z": 0.22375626773199297
+      "x": 0.2578125,
+      "y": 0.2578125,
+      "z": 0.2578125
     },
     "_quat": {
       "__type__": "cc.Quat",
@@ -55,7 +55,8 @@
     "_zIndex": 0,
     "_is3DNode": true,
     "groupIndex": 0,
-    "_id": "7co2sV+GdHpogbrK3VA/BH"
+    "autoReleaseAssets": false,
+    "_id": "8dafc26b-6038-4a58-a7eb-d1a06187e35a"
   },
   {
     "__type__": "cc.Node",
@@ -323,8 +324,6 @@
       "__id__": 5
     },
     "_enabled": true,
-    "speedX": 10,
-    "speedY": 10,
     "_id": "8cGkG7PZpEhKwv8lD71TWz"
   },
   {
@@ -374,6 +373,7 @@
     },
     "_enabled": true,
     "player": null,
+    "enemy": null,
     "wallPreFab": {
       "__uuid__": "6bffda54-6aef-455a-b566-e13cdca72e24"
     },

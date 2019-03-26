@@ -1,7 +1,7 @@
-import * as Heros from "Heros/Heros"
+import Ranger from "../Heros/Ranger";
 cc.Class({
     extends: cc.Component,
-    properties: Heros.Ranger,         
+    properties:{},         
     onCollisionEnter:function(other,self){
         // var otherAabb = other.world.aabb
         // var otherPreAabb = other.world.preAabb.clone();
@@ -71,11 +71,14 @@ cc.Class({
         this.collisionStay = false;
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN,this.onKeyDown,this)
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP,this.onKeyUP,this)
-
+        this.properties = this.node.properties
+        console.log(this.node.properties)
+        console.log(this.properties)
+        console.log(this.properties.speedX)
     },
 
     start () {
-        console.log(this.life)
+        
     },
 
     update (dt) {
