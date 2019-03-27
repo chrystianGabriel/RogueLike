@@ -1,7 +1,15 @@
 import Ranger from "../Heros/Ranger";
 cc.Class({
     extends: cc.Component,
-    properties:{},         
+    properties:{
+        accLeft:false,
+        accRight:false,
+        accUP:false,
+        accDown:false,
+        speedX:10,
+        speedY:10,
+        maxSpeed:900
+    },         
     onCollisionEnter:function(other,self){
         // var otherAabb = other.world.aabb
         // var otherPreAabb = other.world.preAabb.clone();
@@ -64,17 +72,8 @@ cc.Class({
         manager.enabledDrawBoundingBox = true;
     },
     onLoad () {
-        this.accLeft = false;
-        this.accRight = false;
-        this.accUP = false;
-        this.accDown = false;
-        this.collisionStay = false;
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN,this.onKeyDown,this)
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP,this.onKeyUP,this)
-        this.properties = this.node.properties
-        console.log(this.node.properties)
-        console.log(this.properties)
-        console.log(this.properties.speedX)
     },
 
     start () {
@@ -82,18 +81,19 @@ cc.Class({
     },
 
     update (dt) {
+      
         if(this.accLeft){
-            this.speedX = -10
+            this.speedX = -this.node.mask.movement_speed;
             this.speedY = 0
         }else if(this.accRight){
-            this.speedX = 10
+            this.speedX = this.node.mask.movement_speed;
             this.speedY = 0
         }else if(this.accUP){
             this.speedX = 0
-            this.speedY = 10
+            this.speedY = this.node.mask.movement_speed;
         }else if(this.accDown){
             this.speedX = 0
-            this.speedY = -10
+            this.speedY = -this.node.mask.movement_speed;
         }else{
             this.speedX = 0
             this.speedY = 0
@@ -103,11 +103,11 @@ cc.Class({
             this.speedX = this.maxSpeed * this.speedX / Math.abs(this.speedX);
         }
         if(Math.abs(this.speedY) > this.maxSpeed){
-            this.speed = this.maxSpeed * this.speedY / Math.abs(this.speedY);
+            this.speedY = this.maxSpeed * this.speedY / Math.abs(this.speedY);
         }
-
-        this.node.x += this.speedX
-        this.node.y += this.speedY
+        console.log(this.speedX)
+        this.node.x += this.speedX * dt
+        this.node.y += this.speedY * dt
         cc.Camera.cameras[0].node.x = this.node.x
         cc.Camera.cameras[0].node.y = this.node.y
         
