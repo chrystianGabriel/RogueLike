@@ -105,7 +105,6 @@ cc.Class({
         if(Math.abs(this.speedY) > this.maxSpeed){
             this.speedY = this.maxSpeed * this.speedY / Math.abs(this.speedY);
         }
-        console.log(this.speedX)
         this.node.x += this.speedX * dt
         this.node.y += this.speedY * dt
         cc.Camera.cameras[0].node.x = this.node.x
